@@ -4,7 +4,7 @@
 
 # LẬP TRÌNH WWW JAVA – BÀI TẬP WEEK 05
 
-Note: Do em không nghe được thông báo, hôm 14 em hỏi lại thầy mới biết được là nộp link git chứ không phải file nén, nên trên git không ghi nhận lại nhiều lần commit, em xin lỗi thầy nhiều ạ...
+Note: Do em không nghe được thông báo, hôm 14 em hỏi lại thầy mới biết được là nộp link git chứ không phải file nén, nên trên git ghi nhận lại ít lần commit, em xin lỗi thầy nhiều ạ...
 ---
 
 # I. Mô tả ứng dụng
