@@ -9,8 +9,17 @@ Note: Do em không nghe được thông báo, hôm 14 em hỏi lại thầy mớ
 
 # I. Mô tả ứng dụng
 
-Ứng dụng Web của em đang được thiết kế riêng để quản lý tuyển dụng ứng viên cũng như tìm việc làm cho riêng 1 công ty (đó là FSOFT), chứ không phải là diễn đàn hay trang tuyển dụng việc làm chung cho các công ty. Nếu có điều kiện phát triển trong tương lai, ứng dụng sẽ là trang tuyển dụng việc làm chung, ở đó có danh sách các công ty, người dùng có thể truy cập vào từng công ty để tra cứu, cũng giống như truy cập vào ứng dụng web đang hiện hành này của em.
-Trang web của em cho phép công ty đăng tin tuyển dụng, quản lý các công việc tuyển dụng, quản lý danh sách các ứng viên và tìm kiếm các ứng viên phù hợp cho công ty.
+- Ứng dụng Web của em đang được thiết kế riêng để quản lý tuyển dụng ứng viên cũng như tìm việc làm cho riêng 1 công ty (đó là FSOFT), chứ không phải là diễn đàn hay trang tuyển dụng việc làm chung cho các công ty. Nếu có điều kiện phát triển trong tương lai, ứng dụng sẽ là trang tuyển dụng việc làm chung, ở đó có danh sách các công ty, người dùng có thể truy cập vào từng công ty để tra cứu, cũng giống như truy cập vào ứng dụng web đang hiện hành này của em.
+- Trang web của em cho phép công ty đăng tin tuyển dụng, quản lý các công việc tuyển dụng, quản lý danh sách các ứng viên và tìm kiếm các ứng viên phù hợp cho công ty.
+---
+- Công nghệ:
+  + Frontend: html/css, bootrap, javaScript, Thymeleaf
+  + Backend: Java Spring boot, Spring Data JPA
+  + Database: mariaDB
+  + IDE: IntelliJ IDEA
+  + Build tool: Gradle
+  + Source manager: Git/Git hub
+---
 II. Cấu trúc Source code
 Project được chia làm các phần Backend và Frontend:
 - Backend:
