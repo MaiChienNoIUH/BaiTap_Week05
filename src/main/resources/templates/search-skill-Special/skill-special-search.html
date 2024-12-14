@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Candidate special</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+            color: #343a40;
+        }
+
+        .container {
+            max-width: 600px;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            color: #495057;
+        }
+
+        .form-control {
+            border-radius: 5px;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: #80bdff;
+            box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            width: 100%;
+            font-size: 1.1rem;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+        .alert {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="container mt-5">
+    <h2 class="text-center">Tìm Ứng Viên Có Skill đặc biệt</h2>
+
+    <!-- Hiển thị thông báo lỗi nếu có -->
+    <div th:if="${error}" class="alert" role="alert">
+        <span th:text="${error}"></span>
+    </div>
+
+    <form method="post" action="/candidate/recommendCandidate-for-skill-special">
+        <div class="form-group">
+            <label for="skill">Skill</label>
+            <select name="skillName" class="form-control" id="skill" required>
+                <option th:each="skill : ${skills}" th:value="${skill.skillName}" th:text="${skill.skillName}"></option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary mt-4">Tìm Kiếm</button>
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

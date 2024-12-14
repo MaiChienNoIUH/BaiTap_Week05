@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Chỉnh Sửa Ứng Viên</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        /* Đặt lại margin và padding của tất cả phần tử */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Thiết lập phông chữ chung cho trang */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        /* Định dạng tiêu đề */
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+
+        /* Định dạng form */
+        form {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Định dạng fieldset và legend */
+        fieldset {
+            border: 2px solid #4CAF50;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px; /* Điều chỉnh khoảng cách giữa các cột */
+        }
+
+        /* Định dạng cho các label và legend */
+        legend {
+            font-weight: bold;
+            color: #4CAF50;
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            color: #555;
+            font-size: 14px;
+            height: 25px;
+        }
+
+        input[type="text"], input[type="email"], input[type="date"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        /* Hiệu ứng khi focus vào input */
+        input[type="text"]:focus, input[type="email"]:focus, input[type="date"]:focus {
+            border-color: #4CAF50;
+            outline: none;
+            box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+        }
+
+        /* Định dạng nút submit */
+        button[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+    </style>
+</head>
+<body>
+<h1>Chỉnh Sửa Thông Tin Ứng Viên</h1>
+<form action="/candidate/edit" method="post">
+    <input type="hidden" id="id" name="id" th:value="${candidate.id}">
+
+    <fieldset>
+        <legend>Thông Tin Cá Nhân</legend>
+        <div>
+            <label for="fullName">Họ và Tên:</label>
+            <input type="text" id="fullName" name="fullName" th:value="${candidate.fullName}" required>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" th:value="${candidate.email}" required>
+        </div>
+        <div>
+            <label for="dob">Ngày sinh:</label>
+            <input type="date" id="dob" name="dob" th:value="${candidate.dob}" required>
+        </div>
+        <div>
+            <label for="phone">Số Điện Thoại:</label>
+            <input type="text" id="phone" name="phone" th:value="${candidate.phone}" required>
+        </div>
+    </fieldset>
+
+    <fieldset>
+        <legend>Địa Chỉ</legend>
+        <input type="hidden" name="address.id" th:value="${candidate.address.id}">
+
+        <div>
+            <label for="street">Đường:</label>
+            <input type="text" id="street" name="address.street" th:value="${candidate.address.street}" required>
+        </div>
+        <div>
+            <label for="city">Thành phố:</label>
+            <input type="text" id="city" name="address.city" th:value="${candidate.address.city}" required>
+        </div>
+        <div>
+            <label for="country">Quốc gia:</label>
+            <input type="text" id="country" name="address.country" th:value="${candidate.address.country}" required>
+        </div>
+        <div>
+            <label for="number">Số nhà:</label>
+            <input type="text" id="number" name="address.number" th:value="${candidate.address.number}" required>
+        </div>
+        <div>
+            <label for="zipcode">Mã bưu điện (Zipcode):</label>
+            <input type="text" id="zipcode" name="address.zipcode" th:value="${candidate.address.zipcode}" required>
+        </div>
+    </fieldset>
+
+    <button type="submit">Cập Nhật Thông Tin</button>
+</form>
+</body>
+</html>

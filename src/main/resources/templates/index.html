@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Chính</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .header-container {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            width: 100%;
+            background-color: #f8f9fa;
+            padding: 0 20px;
+            border-radius: 5px;
+        }
+
+        .subHeader {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .btn-container {
+            background-color: #f1f1f1;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            background-color: #007bff;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 23px;
+        }
+
+        p {
+            margin: 5px;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #f8f9fa;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            padding-top: 20px;
+        }
+
+        .btn-container {
+            width: 100%;
+        }
+
+        .job-list-container {
+            flex: 1;
+            padding: 20px;
+            max-height: 63vh;
+            overflow-y: auto;
+            background-color: #eeeae5;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        /* Định dạng từng job item */
+        .job-item {
+            background-color: #ffffff;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        .job-item h5 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            color: #007bff;
+        }
+
+        .job-item p {
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .job-item .btn {
+            width: 100%;
+        }
+
+        .job-item-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .job-item-wrapper .job-item {
+            width: 48%; /* Chiếm 48% chiều rộng của mỗi item */
+            margin-right: 4%; /* Khoảng cách giữa các item */
+        }
+
+        .job-item-wrapper .job-item:nth-child(2n) {
+            margin-right: 0;
+        }
+
+        .btn-container .btn {
+            width: 100%;
+            font-weight: 600;
+            padding: 12px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            border-color: #28a745;
+        }
+
+        .btn-success:hover {
+            background-color: #218838;
+            border-color: #1e7e34;
+        }
+
+        .btn-info {
+            background-color: #17a2b8;
+            border-color: #17a2b8;
+        }
+
+        .btn-info:hover {
+            background-color: #117a8b;
+            border-color: #10707f;
+        }
+
+        .btn-warning {
+            background-color: #ffc107;
+            border-color: #ffc107;
+        }
+
+        .btn-warning:hover {
+            background-color: #e0a800;
+            border-color: #d39e00;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            border-color: #545b62;
+        }
+
+        .subHeader .post-job-btn {
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Tiêu đề -->
+<h1>TRANG TUYỂN DỤNG VIỆC LÀM CỦA CÔNG TY FSOFT</h1>
+
+<!-- Header với các thông tin -->
+<div class="header-container">
+    <h3 class="right">Admin performer: MAI CHIẾN NÔ - 21106521</h3>
+</div>
+
+<div class="subHeader">
+    <h3 class="left">MENU</h3>
+    <a href="/job/post-job" class="btn btn-success post-job-btn mb-3">Đăng bài tuyển dụng</a>
+</div>
+
+<!-- Các nút menu và danh sách công việc -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="btn-container">
+                <a href="/candidate/login" class="btn btn-primary mb-3">Login để tìm việc phù hợp</a>
+                <a href="/candidate/list" class="btn btn-secondary mb-3">Danh sách ứng viên có phân trang</a>
+                <a href="/candidate/listNoPage" class="btn btn-secondary mb-3">Danh sách ứng viên không phân trang</a>
+                <a href="/candidate/login_learnSkill" class="btn btn-danger mb-3">Các Skill ứng viên cần học thêm</a>
+                <a href="/candidate/skill-special-search" class="btn btn-warning mb-3">Tìm ứng viên có Skill đặc thù - đặc biệt</a>
+                <!-- Hiển thị thông tin công ty -->
+                <div th:each="company : ${company}">
+                    <p th:text="${company.compName}">Tên công ty</p>
+                    <p th:text="${company.address}">Địa chỉ công ty</p>
+                    <p th:text="'Phone: ' + ${company.phone} + ', ' + ${company.email}">Số điện thoại và email công ty</p>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <div class="job-list-container">
+                <div class="job-item-wrapper">
+                    <div th:each="job : ${jobs}" class="job-item">
+                        <h5 th:text="${job.jobName}">Job Name</h5>
+                        <p th:text="${job.jobDesc}">Job Description</p>
+                        <p th:text="${job.company.compName}">Company Name</p>
+                        <a th:href="@{/job/skill/{id}(id=${job.id})}" class="btn btn-info">Xem thông tin Skills</a>
+                        <a th:href="@{/job/{jobId}/rightCandidates(jobId=${job.id})}" class="btn btn-success mt-2">Xem ứng viên phù hợp</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

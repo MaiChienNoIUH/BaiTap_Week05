@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Job Skills</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+    }
+
+    .container {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      color: #007bff;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      margin-top: 10px;
+    }
+
+    h3 {
+      color: #6fb28a;
+      margin-top: 10px;
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+    }
+
+    table {
+      width: 100%;
+      margin-top: 20px;
+      border-collapse: collapse;
+    }
+
+    table th, table td {
+      padding: 12px;
+      text-align: left;
+      border: 1px solid #dee2e6;
+    }
+
+    table th {
+      background-color: #007bff;
+      color: white;
+    }
+
+    table tbody tr:nth-child(odd) {
+      background-color: #f9f9f9;
+    }
+
+    table tbody tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    .form-group label {
+      font-weight: bold;
+      color: #343a40;
+    }
+
+    .btn-primary {
+      background-color: #007bff;
+      border-color: #007bff;
+    }
+
+    .btn-danger {
+      background-color: #dc3545;
+      border-color: #dc3545;
+    }
+
+    .btn-primary:hover, .btn-danger:hover {
+      opacity: 0.8;
+    }
+
+    .add-skill-form {
+      border: 2px solid #007bff;
+      padding: 20px;
+      padding-top: 0px;
+      border-radius: 8px;
+      background-color: #f8f9fa;
+    }
+
+    .add-skill-form button {
+      width: 100%;
+      font-size: 1.1rem;
+      padding: 12px;
+    }
+
+    .btn-back i {
+      margin-right: 8px;
+    }
+  </style>
+</head>
+<body>
+<div class="container mt-4" style="margin-top: -20px">
+  <!-- Button to go back to the previous page -->
+  <a th:href="${referer != null ? referer : '/default-list'}" class="btn btn-secondary btn-back">
+    <i class="fas fa-arrow-left"></i> Quay về trang danh sách
+  </a>
+
+  <h2>Skills of Job - <span th:text="${job.jobName}"></span></h2>
+
+  <!-- Display Job skills -->
+  <table class="table table-bordered mt-4">
+    <thead>
+    <tr>
+      <th>Skill_id</th>
+      <th>Skill Name</th>
+      <th>Level</th>
+      <th>More Info</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="js : ${jobSkills}">
+      <td th:text="${js.skill.id}">Skill Id</td>
+      <td th:text="${js.skill.skillName}">Skill Name</td>
+      <td th:text="${js.skillLevel}">Skill Level</td>
+      <td th:text="${js.moreInfos}">More Infos</td>
+      <td>
+        <form th:action="@{/job/skill/delete/{jobId}/{skillId}(jobId=${job.id}, skillId=${js.skill.id})}" method="post">
+          <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Delete</button>
+        </form>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <!-- Form to add a new skill -->
+  <div class="add-skill-form">
+    <h3>Add Skill</h3>
+    <form th:action="@{/job/skill/add/{id}(id=${job.id})}" method="post">
+      <div class="form-group">
+        <label for="skill">Skill</label>
+        <select name="skillId" class="form-control" id="skill" required>
+          <option th:each="skill : ${skills}" th:value="${skill.id}" th:text="${skill.skillName}"></option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="skillLevel">Skill Level</label>
+        <input type="number" name="skillLevel" id="skillLevel" class="form-control" min="1" max="4" required>
+      </div>
+
+      <div class="form-group">
+        <label for="moreInfos">More Info</label>
+        <textarea name="moreInfos" id="moreInfos" class="form-control" rows="3"></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Add - update Skill</button>
+    </form>
+  </div>
+</div>
+</body>
+</html>

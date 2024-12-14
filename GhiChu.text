@@ -1,0 +1,2 @@
+1. Phần Reponsitories tốt nhất nên extend JpaRepository để tránh lỗi.
+2. ko dc sử dụng ToString trong các entity vì nó sẽ gây lỗi ko load web
